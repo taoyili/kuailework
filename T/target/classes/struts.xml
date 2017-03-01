@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<!-- 这是一个主配置文件，名字必须以struts.xml命名，并且路径在src下 -->
+<struts>
+	<!-- 修改常量的值 -->
+	<!-- 自动加载配置文件 -->
+	<constant name="struts.configuration.xml.reload" value="true"></constant>
+
+	<!-- 设置为开发者模式 -->
+	<constant name="struts.devMode" value="true"></constant>
+
+	<!-- 设置action的访问后缀 -->
+	<constant name="struts.action.extension" value="do,go,action,,"></constant>
+
+	<!-- 动态方法调用 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+
+	<constant name="struts.objectFactory" value="spring"></constant>
+
+	<!-- 定义默认信息 -->
+	<package name="common" namespace="/" extends="struts-default">
+		<action name="userAction" class="userAction" method="addUser">
+			<result name="success" type="dispatcher">/main.jsp</result>
+		</action>
+
+		<!-- <action name="usersAction" class="usersAction" method="addUser"> <result 
+			name="success" type="dispatcher">/main.jsp</result> </action> -->
+		<action name="usersAction" class="usersAction" method="selectByPrimaryKey">
+			<result name="success" type="dispatcher">/main.jsp</result>
+		</action>
+
+		<action name="regist" class="usersAction" method="addUser">
+			<result name="success" type="dispatcher">/main.jsp</result>
+		</action>
+	</package>
+
+</struts>
